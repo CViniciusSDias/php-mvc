@@ -2,7 +2,7 @@
 
 namespace Alura\Armazenamento\Controller\Local;
 
-use Alura\Armazenamento\Controller\HtmlViewTrait;
+use Alura\Armazenamento\Helper\HtmlViewTrait;
 use Alura\Armazenamento\Entity\Local;
 use Alura\Armazenamento\Infra\EntityManagerFactory;
 use Nyholm\Psr7\Response;

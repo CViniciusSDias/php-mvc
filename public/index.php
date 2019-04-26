@@ -9,6 +9,11 @@ require __DIR__ . '/../vendor/autoload.php';
 $path = $_SERVER['PATH_INFO'];
 $rotas = require __DIR__ . '/../config/rotas.php';
 
+if (!isset($rotas[$path])) {
+    http_response_code(404);
+    exit();
+}
+
 $controllerClass = $rotas[$path];
 
 $psr17Factory = new Psr17Factory();
@@ -27,4 +32,9 @@ $controllerInstance = new $controllerClass();
 
 $response = $controllerInstance->handle($serverRequest);
 
+foreach ($response->getHeaders() as $header => $valores) {
+    foreach ($valores as $value) {
+        header(sprintf('%s: %s', $header, $value), false);
+    }
+}
 echo $response->getBody();

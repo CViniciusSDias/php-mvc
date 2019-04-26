@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ListadorDeObjetos implements RequestHandlerInterface
+class ListaDeObjetos implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 
@@ -22,14 +22,6 @@ class ListadorDeObjetos implements RequestHandlerInterface
             ->getRepository(Objeto::class);
     }
 
-    /**
-     * Handles a request and produces a response.
-     *
-     * May call other collaborating code to generate the response.
-     *
-     * @param ServerRequestInterface $request
-     * @return ResponseInterface
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $objetoList = $this->objetosRepository
@@ -37,7 +29,7 @@ class ListadorDeObjetos implements RequestHandlerInterface
 
         $html = $this->getHtmlFromTemplate(
             'objetos/listar-objetos.php',
-            ['objetoList' => $objetoList]
+            compact('objetoList')
         );
         return new Response(200, [], $html);
     }

@@ -1,4 +1,4 @@
-<?php $titulo = 'Listagem de Locais'; require __DIR__ . '/../inicio-html.php'; ?>
+<?php require __DIR__ . '/../inicio-html.php'; ?>
 
 <div class="jumbotron">
     <h1><?= $titulo; ?></h1>
@@ -6,11 +6,18 @@
 
 <ul class="list-group">
     <?php foreach ($locais as $local): ?>
-    <li class="list-group-item">
+    <li class="list-group-item d-flex justify-content-between">
         <?= $local->getDescricao(); ?>
-        <a href="/editar-local?id=<?= $local->getId(); ?>" class="btn btn-sm btn-info">
-            Editar
-        </a>
+
+        <span>
+            <a href="/editar-local?id=<?= $local->getId(); ?>" class="btn btn-sm btn-info">
+                Editar
+            </a>
+
+            <a href="/excluir-local?id=<?= $local->getId(); ?>" class="btn btn-sm btn-danger">
+                Excluir
+            </a>
+        </span>
     </li>
     <?php endforeach; ?>
 </ul>

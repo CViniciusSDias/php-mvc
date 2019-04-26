@@ -1,6 +1,6 @@
 <?php
 
-namespace Alura\Armazenamento\Controller;
+namespace Alura\Armazenamento\Controller\Local;
 
 use Alura\Armazenamento\Entity\Local;
 use Alura\Armazenamento\Infra\EntityManagerFactory;
@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class PersistenciaDeLocal implements RequestHandlerInterface
+class Persistencia implements RequestHandlerInterface
 {
     /**
      * Handles a request and produces a response.

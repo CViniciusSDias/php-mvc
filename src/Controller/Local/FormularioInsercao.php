@@ -1,14 +1,15 @@
 <?php
 
-namespace Alura\Armazenamento\Controller;
+namespace Alura\Armazenamento\Controller\Local;
 
+use Alura\Armazenamento\Controller\HtmlViewTrait;
 use Alura\Armazenamento\Entity\Local;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class FormularioInsercaoDeLocal implements RequestHandlerInterface
+class FormularioInsercao implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 

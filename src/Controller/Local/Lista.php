@@ -1,7 +1,8 @@
 <?php
 
-namespace Alura\Armazenamento\Controller;
+namespace Alura\Armazenamento\Controller\Local;
 
+use Alura\Armazenamento\Controller\HtmlViewTrait;
 use Alura\Armazenamento\Entity\Local;
 use Alura\Armazenamento\Infra\EntityManagerFactory;
 use Nyholm\Psr7\Response;
@@ -9,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class FormularioEdicaoDeLocal implements RequestHandlerInterface
+class Lista implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 
@@ -29,10 +30,10 @@ class FormularioEdicaoDeLocal implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $local = $this->locaisRepository->find($request->getQueryParams()['id']);
+        $locais = $this->locaisRepository->findBy($request->getQueryParams(), ['descricao' => 'ASC']);
+        $titulo = 'Listagem de Locais';
 
-        $titulo = 'Cadastrar Local';
-        $html = $this->getHtmlFromTemplate('locais/formulario.php', compact('local', 'titulo'));
+        $html = $this->getHtmlFromTemplate('locais/listar-locais.php', compact('locais', 'titulo'));
 
         return new Response(200, [], $html);
     }

@@ -6,7 +6,12 @@
 
 <ul class="list-group">
     <?php foreach ($locais as $local): ?>
-    <li class="list-group-item"><?= $local->getDescricao(); ?></li>
+    <li class="list-group-item">
+        <?= $local->getDescricao(); ?>
+        <a href="/editar-local?id=<?= $local->getId(); ?>" class="btn btn-sm btn-info">
+            Editar
+        </a>
+    </li>
     <?php endforeach; ?>
 </ul>
 

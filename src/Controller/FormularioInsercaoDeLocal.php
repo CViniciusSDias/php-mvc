@@ -8,13 +8,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class FormularioLocal implements RequestHandlerInterface
+class FormularioInsercaoDeLocal implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $local = new Local('');
+        $local = new Local();
         $titulo = 'Cadastrar Local';
         $html = $this->getHtmlFromTemplate('locais/formulario.php', compact('local', 'titulo'));
 

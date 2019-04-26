@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class InsercaoLocal implements RequestHandlerInterface
+class PersistenciaDeLocal implements RequestHandlerInterface
 {
     /**
      * Handles a request and produces a response.
@@ -18,10 +18,16 @@ class InsercaoLocal implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $local = new Local($request->getParsedBody()['descricao']);
+        $local = new Local();
+        $local->setDescricao($request->getParsedBody()['descricao']);
         $em = (new EntityManagerFactory())->getEntityManager();
 
-        $em->persist($local);
+        if (array_key_exists('id', $request->getQueryParams())) {
+            $local->setId($request->getQueryParams()['id']);
+            $em->merge($local);
+        } else {
+            $em->persist($local);
+        }
         $em->flush();
 
         return new Response(302, ['Location' => '/listar-locais']);

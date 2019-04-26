@@ -23,11 +23,6 @@ class FormularioEdicao implements RequestHandlerInterface
             ->getRepository(Local::class);
     }
 
-    /**
-     * Handles a request and produces a response.
-     *
-     * May call other collaborating code to generate the response.
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $local = $this->locaisRepository->find($request->getQueryParams()['id']);

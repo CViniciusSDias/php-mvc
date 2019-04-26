@@ -23,11 +23,6 @@ class Lista implements RequestHandlerInterface
             ->getRepository(Local::class);
     }
 
-    /**
-     * Handles a request and produces a response.
-     *
-     * May call other collaborating code to generate the response.
-     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $locais = $this->locaisRepository->findBy($request->getQueryParams(), ['descricao' => 'ASC']);

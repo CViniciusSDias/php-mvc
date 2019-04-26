@@ -1,15 +1,16 @@
 <?php
 
-namespace Alura\Armazenamento\Controller;
+namespace Alura\Armazenamento\Controller\Objeto;
 
 use Alura\Armazenamento\Entity\Objeto;
+use Alura\Armazenamento\Helper\HtmlViewTrait;
 use Alura\Armazenamento\Infra\EntityManagerFactory;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ListaDeObjetos implements RequestHandlerInterface
+class Lista implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 

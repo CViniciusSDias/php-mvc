@@ -64,4 +64,9 @@ class Objeto
     {
         $this->local = $local;
     }
+
+    public function getDescricaoLocal(): string
+    {
+        return isset($this->local) ? $this->local->getDescricao() : '';
+    }
 }

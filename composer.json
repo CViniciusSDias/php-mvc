@@ -1,0 +1,13 @@
+{
+  "autoload": {
+    "psr-4": {
+        "Alura\\Armazenamento\\": "src/"
+    }
+  },
+  "require": {
+    "psr/http-message": "^1.0",
+    "psr/http-server-handler": "^1.0",
+    "nyholm/psr7": "^1.1",
+    "nyholm/psr7-server": "^0.3.0"
+  }
+}

@@ -4,7 +4,7 @@ namespace Alura\Armazenamento\Controller\Objeto;
 
 use Alura\Armazenamento\Entity\Local;
 use Alura\Armazenamento\Helper\HtmlViewTrait;
-use Alura\Armazenamento\Infra\EntityManagerFactory;
+use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -16,11 +16,9 @@ class FormularioInsercao implements RequestHandlerInterface
 
     private $locaisRepository;
 
-    public function __construct()
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->locaisRepository = (new EntityManagerFactory())
-            ->getEntityManager()
-            ->getRepository(Local::class);
+        $this->locaisRepository = $entityManager->getRepository(Local::class);
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

@@ -2,6 +2,7 @@
 
 use Nyholm\Psr7\Factory\Psr17Factory;
 use Nyholm\Psr7Server\ServerRequestCreator;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -27,8 +28,11 @@ $creator = new ServerRequestCreator(
 
 $serverRequest = $creator->fromGlobals();
 
+/** @var ContainerInterface $container */
+$container = require __DIR__ . '/../config/dependencias.php';
+
 /** @var RequestHandlerInterface $controllerInstance */
-$controllerInstance = new $controllerClass();
+$controllerInstance = $container->get($controllerClass);
 
 $response = $controllerInstance->handle($serverRequest);
 

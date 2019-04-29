@@ -25,7 +25,7 @@
         <select name="local_id" id="local_id" class="form-control">
             <option>Selecione</option>
             <?php foreach ($locais as $local): ?>
-            <option value="<?= $local->getId(); ?>" <?= isset($objeto) && $objeto->getLocal() == $local ? 'selected' : ''; ?>>
+            <option value="<?= $local->getId(); ?>" <?= isset($objeto) && $objeto->getIdLocal() === $local->getId() ? 'selected' : ''; ?>>
                 <?= $local->getDescricao(); ?>
             </option>
             <?php endforeach; ?>

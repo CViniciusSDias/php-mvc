@@ -45,6 +45,11 @@ class Objeto
         return $this->id;
     }
 
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
     public function getDescricao(): string
     {
         return $this->descricao;
@@ -63,6 +68,11 @@ class Objeto
     public function armazenarEm(Local $local)
     {
         $this->local = $local;
+    }
+
+    public function getIdLocal(): int
+    {
+        return $this->local->getId();
     }
 
     public function getDescricaoLocal(): string

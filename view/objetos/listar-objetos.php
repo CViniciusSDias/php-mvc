@@ -22,11 +22,11 @@
         <td><?= $objeto->getUnidadeMedida(); ?></td>
         <td><?= $objeto->getDescricaoLocal(); ?></td>
         <td>
-            <a href="#" class="btn btn-sm btn-info">
+            <a href="/editar-objeto?id=<?= $objeto->getId(); ?>" class="btn btn-sm btn-info">
                 Editar
             </a>
 
-            <a href="#" class="btn btn-sm btn-danger">
+            <a href="/excluir-objeto?id=<?= $objeto->getId(); ?>" class="btn btn-sm btn-danger">
                 Excluir
             </a>
         </td>

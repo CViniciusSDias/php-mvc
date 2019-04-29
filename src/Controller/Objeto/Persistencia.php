@@ -18,10 +18,15 @@ class Persistencia implements RequestHandlerInterface
         $post = $request->getParsedBody();
         $objeto = new Objeto($post['descricao'], $post['tamanho'], $post['unidade_medida']);
         /** @var Local $local */
-        $local = $em->getReference(Local::class, $post['local_id']);
+        $local = $em->find(Local::class, $post['local_id']);
         $objeto->armazenarEm($local);
 
-        $em->persist($objeto);
+        if (array_key_exists('id', $request->getQueryParams())) {
+            $objeto->setId($request->getQueryParams()['id']);
+            $em->merge($objeto);
+        } else {
+            $em->persist($objeto);
+        }
         $em->flush();
 
         return new Response(302, ['Location' => '/listar-objetos']);

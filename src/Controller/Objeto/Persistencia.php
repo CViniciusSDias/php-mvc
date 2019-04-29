@@ -4,7 +4,6 @@ namespace Alura\Armazenamento\Controller\Objeto;
 
 use Alura\Armazenamento\Entity\Local;
 use Alura\Armazenamento\Entity\Objeto;
-use Alura\Armazenamento\Infra\EntityManagerFactory;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;

@@ -5,7 +5,7 @@ namespace Alura\Armazenamento\Helper;
 
 trait HtmlViewTrait
 {
-    public function getHtmlFromTemplate(string $template, array $data): string
+    private function getHtmlFromTemplate(string $template, array $data): string
     {
         ob_start();
         extract($data);

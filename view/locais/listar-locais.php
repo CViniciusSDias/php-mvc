@@ -4,6 +4,8 @@
     <h1><?= $titulo; ?></h1>
 </div>
 
+<a href="/novo-local" class="btn btn-primary mb-2">Novo Local</a>
+
 <ul class="list-group">
     <?php foreach ($locais as $local): ?>
     <li class="list-group-item d-flex justify-content-between">

@@ -4,6 +4,8 @@
     <h1><?= $titulo; ?></h1>
 </div>
 
+<a href="/novo-objeto" class="btn btn-primary mb-2">Novo Objeto</a>
+
 <table class="table table-bordered table-striped">
     <thead>
         <tr>

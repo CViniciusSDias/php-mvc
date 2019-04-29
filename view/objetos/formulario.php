@@ -33,6 +33,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="/listar-objetos" class="btn btn-secondary">Cancelar</a>
 </form>
 
 <?php require __DIR__ . '/../fim-html.php'; ?>

@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
 
-class EntityManagerFactory
+class EntitymanagerCreator
 {
     public function getEntityManager(): EntityManagerInterface
     {

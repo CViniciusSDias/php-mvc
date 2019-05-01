@@ -22,3 +22,11 @@
 </nav>
 
 <div class="container">
+    <?php if (isset($_SESSION['mensagem_flash'])): ?>
+    <div class="alert alert-<?= $_SESSION['tipo_mensagem']; ?>">
+        <?= $_SESSION['mensagem_flash']; ?>
+    </div>
+    <?php
+        unset($_SESSION['mensagem_flash']);
+        unset($_SESSION['tipo_mensagem']);
+    endif; ?>

@@ -3,6 +3,7 @@
 namespace Alura\Armazenamento\Controller;
 
 use Alura\Armazenamento\Entity\Usuario;
+use Alura\Armazenamento\Helper\MensagemFlash;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
@@ -11,6 +12,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class Login implements RequestHandlerInterface
 {
+    use MensagemFlash;
+
     private $repositorioUsuarios;
 
     public function __construct(EntityManagerInterface $entityManager)
@@ -23,13 +26,15 @@ class Login implements RequestHandlerInterface
         /** @var Usuario $usuario */
         $usuario = $this->repositorioUsuarios->findOneBy(['email' => $request->getParsedBody()['email']]);
 
-        $urlParaRedirecionar = '/login';
 
-        if (!is_null($usuario) && $usuario->senhaEstaCorreta($request->getParsedBody()['senha'])) {
-            $urlParaRedirecionar = '/listar-cursos';
-            $_SESSION['logado'] = true;
+        if (is_null($usuario) || !$usuario->senhaEstaCorreta($request->getParsedBody()['senha'])) {
+            $this->adicionaMensagemFlash('danger', 'Usuário ou senha inválidos');
+
+            return new Response(302, ['Location' => '/login']);
         }
 
-        return new Response(302, ['Location' => $urlParaRedirecionar]);
+        $_SESSION['logado'] = true;
+
+        return new Response(302, ['Location' => '/listar-cursos']);
     }
 }

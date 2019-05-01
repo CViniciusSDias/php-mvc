@@ -11,7 +11,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Salvar</button>
-    <a href="/listar-locais" class="btn btn-secondary">Cancelar</a>
+    <a href="/listar-cursos" class="btn btn-secondary">Cancelar</a>
 </form>
 
 <?php require __DIR__ . '/../fim-html.php'; ?>

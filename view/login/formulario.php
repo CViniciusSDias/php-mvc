@@ -7,7 +7,7 @@
     <form method="post" action="/fazer-login">
         <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="email" required class="form-control" id="email" name="email">
+            <input type="email" required class="form-control" id="email" name="email" autofocus>
         </div>
 
         <div class="form-group">

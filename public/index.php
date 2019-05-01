@@ -17,6 +17,8 @@ if (!isset($rotas[$path])) {
 
 session_start();
 if (!isset($_SESSION['logado']) && stripos($path, 'login') === false) {
+    $_SESSION['tipo_mensagem'] = 'danger';
+    $_SESSION['mensagem_flash'] = 'Você não está logado';
     header('Location: /login');
     exit();
 }

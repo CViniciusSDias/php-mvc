@@ -7,6 +7,8 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+ini_set('error_reporting', E_ALL);
+
 $path = $_SERVER['PATH_INFO'];
 $rotas = require __DIR__ . '/../config/rotas.php';
 

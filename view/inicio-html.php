@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<?php if (isset($_SESSION['logado'])): ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
     <div class="collapse navbar-collapse">
         <a class="navbar-brand mr-auto" href="/listar-cursos">Cursos</a>
@@ -20,6 +21,7 @@
         </ul>
     </div>
 </nav>
+<?php endif; ?>
 
 <div class="container">
     <?php if (isset($_SESSION['mensagem_flash'])): ?>

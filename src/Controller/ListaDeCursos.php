@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class Lista implements RequestHandlerInterface
+class ListaDeCursos implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 

@@ -15,6 +15,12 @@ if (!isset($rotas[$path])) {
     exit();
 }
 
+session_start();
+if (!isset($_SESSION['logado']) && stripos($path, 'login') === false) {
+    header('Location: /login');
+    exit();
+}
+
 $controllerClass = $rotas[$path];
 
 $psr17Factory = new Psr17Factory();

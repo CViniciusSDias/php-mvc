@@ -1,6 +1,8 @@
 <?php
 
 return [
+    '/login' => \Alura\Armazenamento\Controller\FormularioLogin::class,
+    '/fazer-login' => \Alura\Armazenamento\Controller\Login::class,
     '/novo-curso' => \Alura\Armazenamento\Controller\FormularioInsercaoCurso::class,
     '/salvar-curso' => \Alura\Armazenamento\Controller\PersistenciaCurso::class,
     '/listar-cursos' => \Alura\Armazenamento\Controller\ListaDeCursos::class,

@@ -1,8 +1,8 @@
 <?php
 
-namespace Alura\Armazenamento\Controller\Local;
+namespace Alura\Armazenamento\Controller;
 
-use Alura\Armazenamento\Entity\Local;
+use Alura\Armazenamento\Entity\Curso;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
@@ -23,17 +23,17 @@ class Persistencia implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $local = new Local();
-        $local->setDescricao($request->getParsedBody()['descricao']);
+        $curso = new Curso();
+        $curso->setDescricao($request->getParsedBody()['descricao']);
 
         if (array_key_exists('id', $request->getQueryParams())) {
-            $local->setId($request->getQueryParams()['id']);
-            $this->entityManager->merge($local);
+            $curso->setId($request->getQueryParams()['id']);
+            $this->entityManager->merge($curso);
         } else {
-            $this->entityManager->persist($local);
+            $this->entityManager->persist($curso);
         }
         $this->entityManager->flush();
 
-        return new Response(302, ['Location' => '/listar-locais']);
+        return new Response(302, ['Location' => '/listar-cursos']);
     }
 }

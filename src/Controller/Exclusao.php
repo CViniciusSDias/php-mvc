@@ -1,20 +1,16 @@
 <?php
 
-namespace Alura\Armazenamento\Controller\Local;
+namespace Alura\Armazenamento\Controller;
 
-use Alura\Armazenamento\Helper\HtmlViewTrait;
-use Alura\Armazenamento\Entity\Local;
+use Alura\Armazenamento\Entity\Curso;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class FormularioEdicao implements RequestHandlerInterface
+class Exclusao implements RequestHandlerInterface
 {
-    use HtmlViewTrait;
-
-
     /**
      * @var EntityManagerInterface
      */
@@ -27,11 +23,10 @@ class FormularioEdicao implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $local = $this->entityManager->find(Local::class, $request->getQueryParams()['id']);
+        $curso = $this->entityManager->getReference(Curso::class, $request->getQueryParams()['id']);
+        $this->entityManager->remove($curso);
+        $this->entityManager->flush();
 
-        $titulo = 'Editar Local';
-        $html = $this->getHtmlFromTemplate('locais/formulario.php', compact('local', 'titulo'));
-
-        return new Response(200, [], $html);
+        return new Response(302, ['Location' => '/listar-cursos']);
     }
 }

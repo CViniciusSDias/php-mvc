@@ -1,14 +1,9 @@
 <?php
 
 return [
-    '/novo-objeto' => \Alura\Armazenamento\Controller\Objeto\FormularioInsercao::class,
-    '/salvar-objeto' => \Alura\Armazenamento\Controller\Objeto\Persistencia::class,
-    '/listar-objetos' => \Alura\Armazenamento\Controller\Objeto\Lista::class,
-    '/editar-objeto' => \Alura\Armazenamento\Controller\Objeto\FormularioEdicao::class,
-    '/excluir-objeto' => \Alura\Armazenamento\Controller\Objeto\Exclusao::class,
-    '/novo-local' => \Alura\Armazenamento\Controller\Local\FormularioInsercao::class,
-    '/salvar-local' => \Alura\Armazenamento\Controller\Local\Persistencia::class,
-    '/listar-locais' => \Alura\Armazenamento\Controller\Local\Lista::class,
-    '/editar-local' => \Alura\Armazenamento\Controller\Local\FormularioEdicao::class,
-    '/excluir-local' => \Alura\Armazenamento\Controller\Local\Exclusao::class,
+    '/novo-curso' => \Alura\Armazenamento\Controller\FormularioInsercao::class,
+    '/salvar-curso' => \Alura\Armazenamento\Controller\Persistencia::class,
+    '/listar-cursos' => \Alura\Armazenamento\Controller\Lista::class,
+    '/editar-curso' => \Alura\Armazenamento\Controller\FormularioEdicao::class,
+    '/excluir-curso' => \Alura\Armazenamento\Controller\Exclusao::class,
 ];

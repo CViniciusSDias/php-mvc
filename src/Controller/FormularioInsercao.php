@@ -1,9 +1,9 @@
 <?php
 
-namespace Alura\Armazenamento\Controller\Local;
+namespace Alura\Armazenamento\Controller;
 
 use Alura\Armazenamento\Helper\HtmlViewTrait;
-use Alura\Armazenamento\Entity\Local;
+use Alura\Armazenamento\Entity\Curso;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,9 +15,9 @@ class FormularioInsercao implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $local = new Local();
-        $titulo = 'Cadastrar Local';
-        $html = $this->getHtmlFromTemplate('locais/formulario.php', compact('local', 'titulo'));
+        $curso = new Curso();
+        $titulo = 'Cadastrar Curso';
+        $html = $this->getHtmlFromTemplate('cursos/formulario.php', compact('curso', 'titulo'));
 
         return new Response(200, [], $html);
     }

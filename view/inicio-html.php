@@ -20,10 +20,7 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/listar-locais">Locais</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/listar-objetos">Objetos</a>
+                <a class="nav-link" href="/listar-cursos">Cursos</a>
             </li>
         </ul>
     </div>

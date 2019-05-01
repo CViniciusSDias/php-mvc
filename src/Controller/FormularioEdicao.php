@@ -1,16 +1,20 @@
 <?php
 
-namespace Alura\Armazenamento\Controller\Objeto;
+namespace Alura\Armazenamento\Controller;
 
-use Alura\Armazenamento\Entity\Objeto;
+use Alura\Armazenamento\Helper\HtmlViewTrait;
+use Alura\Armazenamento\Entity\Curso;
 use Doctrine\ORM\EntityManagerInterface;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class Exclusao implements RequestHandlerInterface
+class FormularioEdicao implements RequestHandlerInterface
 {
+    use HtmlViewTrait;
+
+
     /**
      * @var EntityManagerInterface
      */
@@ -23,10 +27,11 @@ class Exclusao implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $objeto = $this->entityManager->getReference(Objeto::class, $request->getQueryParams()['id']);
-        $this->entityManager->remove($objeto);
-        $this->entityManager->flush();
+        $curso = $this->entityManager->find(Curso::class, $request->getQueryParams()['id']);
 
-        return new Response(302, ['Location' => '/listar-objetos']);
+        $titulo = 'Editar Curso';
+        $html = $this->getHtmlFromTemplate('cursos/formulario.php', compact('curso', 'titulo'));
+
+        return new Response(200, [], $html);
     }
 }

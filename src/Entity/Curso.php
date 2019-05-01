@@ -6,7 +6,7 @@ namespace Alura\Armazenamento\Entity;
  * @Entity
  * @Table(name="locais")
  */
-class Local
+class Curso
 {
     /**
      * @Id

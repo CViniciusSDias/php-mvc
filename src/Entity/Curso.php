@@ -4,7 +4,7 @@ namespace Alura\Armazenamento\Entity;
 
 /**
  * @Entity
- * @Table(name="locais")
+ * @Table(name="cursos")
  */
 class Curso
 {

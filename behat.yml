@@ -14,3 +14,14 @@ default:
         - FormacaoNoBanco
       filters:
         tags: integracao
+    e2e:
+      contexts:
+        - Behat\MinkExtension\Context\MinkContext
+      filters:
+        tags: e2e
+  extensions:
+    Behat\MinkExtension:
+      base_url:  'http://0.0.0.0:8080'
+      sessions:
+        default:
+          goutte: ~

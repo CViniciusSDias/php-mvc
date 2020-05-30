@@ -28,15 +28,19 @@ na raiz deste projeto.
 
 Depois, execute o seguinte comando: 
 ```
-$ docker run --rm -itv $(pwd):/app -w /app -u $(id -u):$(id -g) php:7.3-cli php vendor/bin/doctrine orm:schema-tool:create
+$ docker run --rm -itv $(pwd):/app -w /app -u $(id -u):$(id -g) php:latest php vendor/bin/doctrine orm:schema-tool:create
 ```
 
-Este comando criará a estrutura do banco de dados SQLite.
+Este comando criará a estrutura do banco de dados SQLite. Agora vamos inserir um usuário com e-mail `email@example.com` e senha `123456`:
+
+```
+$ docker run --rm -itv $(pwd):/app -w /app -u $(id -u):$(id -g) php:latest php vendor/bin/doctrine dbal:run-sql "INSERT INTO usuarios (email, senha) VALUES ('email@example.com', '\$argon2i\$v=19\$m=65536,t=4,p=1\$WHpBb1FzTDVpTmQubU55bA\$jtZiWSSbmw1Ru4tYEq1SzShrMu0ap2PjblRQRubNPgo');"
+```
 
 Tendo feito isso, basta subir um servidor de testes. Isso pode ser feito com:
 
 ```
-docker run -itv $(pwd):/app -w /app -u $(id -u):$(id -g) -p 8080:8080 php:7.3-cli php -S 0.0.0.0:8080 -t public
+docker run -itv $(pwd):/app -w /app -u $(id -u):$(id -g) -p 8080:8080 php:latest php -S 0.0.0.0:8080 -t public
 ```
 
-Pronto! Basta acessar em seu navegador o endereço http://localhost:8080/novo-local e começar a interagir com o sistema.
+Pronto! Basta acessar no seu navegador o endereço http://localhost:8080/ e começar a interagir com o sistema.

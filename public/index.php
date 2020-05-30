@@ -9,8 +9,13 @@ require __DIR__ . '/../vendor/autoload.php';
 
 ini_set('error_reporting', E_ALL);
 
-$path = $_SERVER['PATH_INFO'];
+$path = $_SERVER['PATH_INFO'] ?? '/';
 $rotas = require __DIR__ . '/../config/rotas.php';
+
+if ($path === '/') {
+    header('Location: /listar-cursos');
+    exit();
+}
 
 if (!isset($rotas[$path])) {
     http_response_code(404);

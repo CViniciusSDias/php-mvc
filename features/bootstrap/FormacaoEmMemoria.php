@@ -31,9 +31,9 @@ class FormacaoEmMemoria implements Context
     }
 
     /**
-     * @When /^eu devo ter uma formação criada com a descrição "([^"]*)"$/
+     * @Then eu devo ter uma formação criada com a descrição :arg1
      */
-    public function euDevoTerUmaFormaçãoCriadaComADescrição(string $descricaoFormacao)
+    public function euDevoTerUmaFormacaoCriadaComADescricao(string $descricaoFormacao)
     {
         assert($this->formacao->getDescricao() === $descricaoFormacao);
     }

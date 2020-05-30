@@ -13,6 +13,36 @@
     "php-di/php-di": "^6.0"
   },
   "require-dev": {
-    "behat/behat": "^3.6"
-  }
+    "behat/behat": "dev-master as 3.6",
+    "behat/mink": "dev-symfony5 as 1.7.999",
+    "behat/mink-extension": "dev-patch-4",
+    "behat/mink-goutte-driver": "^1.2"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/japicoder/Behat"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/larzuk91/Symfony2Extension"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ruudk/DoctrineDataFixturesExtension"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/DonCallisto/MinkExtension",
+      "comment": "Waiting for https://github.com/Behat/MinkExtension/pull/355"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ruudk/MinkBrowserKitDriver"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/breizh81/Mink"
+    }
+  ]
 }

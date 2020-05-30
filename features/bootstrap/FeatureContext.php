@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityManagerInterface;
 class FeatureContext implements Context
 {
     private EntityManagerInterface $em;
+    private string $mensagemDeErro = '';
+    private int $idFormacaoInserida;
 
     /**
      * Initializes context.
@@ -30,15 +32,20 @@ class FeatureContext implements Context
     public function euTentarCriarUmaFormacaoComADescricao(string $descricaoFormacao)
     {
         $formacao = new Formacao();
-        $formacao->setDescricao($descricaoFormacao);
+
+        try {
+            $formacao->setDescricao($descricaoFormacao);
+        } catch (\InvalidArgumentException $exception) {
+            $this->mensagemDeErro = $exception->getMessage();
+        }
     }
 
     /**
      * @Then eu vou ver a seguinte mensagem de erro :arg1
      */
-    public function euVouVerASeguinteMensagemDeErro($arg1)
+    public function euVouVerASeguinteMensagemDeErro(string $mensagemDeErro)
     {
-        throw new PendingException();
+        assert($mensagemDeErro === $this->mensagemDeErro);
     }
 
     /**
@@ -59,6 +66,8 @@ class FeatureContext implements Context
 
         $this->em->persist($formacao);
         $this->em->flush();
+
+        $this->idFormacaoInserida = $formacao->getId();
     }
 
     /**
@@ -66,6 +75,11 @@ class FeatureContext implements Context
      */
     public function seEuBuscarNoBancoDevoEncontarEssaFormacao()
     {
-        throw new PendingException();
+        /** @var \Doctrine\Persistence\ObjectRepository $repositorio */
+        $repositorio = $this->em->getRepository(Formacao::class);
+        /** @var Formacao $formacao */
+        $formacao = $repositorio->find($this->idFormacaoInserida);
+
+        assert($formacao instanceof Formacao);
     }
 }

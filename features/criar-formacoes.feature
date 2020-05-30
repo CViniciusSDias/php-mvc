@@ -14,5 +14,5 @@ Funcionalidade: Cadastro de formações
 
   Cenário: Cadastro de formação válida deve salvar no banco
     Dado que estou conectado ao banco de dados
-    Quando tento criar uma nova formação com a descrição "PHP na web"
+    Quando tento salvar uma nova formação com a descrição "PHP na web"
     Então se eu buscar no banco, devo encontar essa formação

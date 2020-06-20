@@ -4,6 +4,7 @@ default:
       contexts:
         - FormacaoEmMemoria
         - FormacaoNoBanco
+        - Behat\MinkExtension\Context\MinkContext
     unidade:
       contexts:
         - FormacaoEmMemoria

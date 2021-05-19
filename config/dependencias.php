@@ -1,11 +1,13 @@
 <?php
 
-$builder = new \DI\ContainerBuilder();
+use Alura\Armazenamento\Infra\EntitymanagerCreator;
+use DI\ContainerBuilder;
+use Doctrine\ORM\EntityManagerInterface;
+
+$builder = new ContainerBuilder();
 
 $builder->addDefinitions([
-    \Doctrine\ORM\EntityManagerInterface::class => function () {
-        return (new \Alura\Armazenamento\Infra\EntitymanagerCreator())->getEntityManager();
-    },
+    EntityManagerInterface::class => fn () => (new EntitymanagerCreator())->getEntityManager(),
 ]);
 
 return $builder->build();

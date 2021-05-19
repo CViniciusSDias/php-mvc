@@ -14,15 +14,8 @@ class PersistenciaCurso implements RequestHandlerInterface
 {
     use MensagemFlash;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
+    public function __construct(private EntityManagerInterface $entityManager)
+    { }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {

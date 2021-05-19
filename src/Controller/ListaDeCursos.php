@@ -5,6 +5,7 @@ namespace Alura\Armazenamento\Controller;
 use Alura\Armazenamento\Helper\HtmlViewTrait;
 use Alura\Armazenamento\Entity\Curso;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,7 +15,7 @@ class ListaDeCursos implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 
-    private $locaisRepository;
+    private ObjectRepository $locaisRepository;
 
     public function __construct(EntityManagerInterface $entityManager)
     {

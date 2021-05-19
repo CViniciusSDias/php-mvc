@@ -5,6 +5,7 @@ namespace Alura\Armazenamento\Controller;
 use Alura\Armazenamento\Entity\Usuario;
 use Alura\Armazenamento\Helper\MensagemFlash;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ObjectRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,7 +15,7 @@ class Login implements RequestHandlerInterface
 {
     use MensagemFlash;
 
-    private $repositorioUsuarios;
+    private ObjectRepository $repositorioUsuarios;
 
     public function __construct(EntityManagerInterface $entityManager)
     {

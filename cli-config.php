@@ -1,6 +1,10 @@
 <?php
+
+use Alura\Armazenamento\Infra\EntitymanagerCreator;
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+
 require_once __DIR__ . '/vendor/autoload.php';
 
-return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet(
-    (new \Alura\Armazenamento\Infra\EntitymanagerCreator())->getEntityManager()
+return ConsoleRunner::createHelperSet(
+    (new EntitymanagerCreator())->getEntityManager()
 );

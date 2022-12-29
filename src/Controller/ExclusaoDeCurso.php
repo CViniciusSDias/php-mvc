@@ -14,14 +14,8 @@ class ExclusaoDeCurso implements RequestHandlerInterface
 {
     use MensagemFlash;
 
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(private EntityManagerInterface $entityManager)
     {
-        $this->entityManager = $entityManager;
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface

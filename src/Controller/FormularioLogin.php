@@ -12,7 +12,6 @@ class FormularioLogin implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 
-
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $html = $this->getHtmlFromTemplate('login/formulario.php', [

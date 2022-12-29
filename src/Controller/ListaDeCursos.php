@@ -5,6 +5,8 @@ namespace Alura\Armazenamento\Controller;
 use Alura\Armazenamento\Helper\HtmlViewTrait;
 use Alura\Armazenamento\Entity\Curso;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Nyholm\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -14,16 +16,17 @@ class ListaDeCursos implements RequestHandlerInterface
 {
     use HtmlViewTrait;
 
-    private $locaisRepository;
+    /** @var EntityRepository<Curso> */
+    private EntityRepository $cursosRepository;
 
     public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->locaisRepository = $entityManager->getRepository(Curso::class);
+        $this->cursosRepository = $entityManager->getRepository(Curso::class);
     }
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $cursos = $this->locaisRepository->findBy($request->getQueryParams(), ['descricao' => 'ASC']);
+        $cursos = $this->cursosRepository->findBy($request->getQueryParams(), ['descricao' => 'ASC']);
         $titulo = 'Listagem de Cursos';
 
         $html = $this->getHtmlFromTemplate('cursos/listar.php', compact('cursos', 'titulo'));
